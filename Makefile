@@ -34,7 +34,7 @@ clean:
 	make firmware xx=clean parm2=MCU=atmega32
 	make firmware xx=clean parm2=MCU=atmega644
 	make firmwareOhneEds xx=clean
-	cd hcanweb; sudo make clean 
+	cd hcanweb; make clean 
 
 dep:
 	make cppDienste xx=dep
@@ -59,42 +59,42 @@ install:
 
 
 strukturen:
-	cd xml; sudo make $(xx)
+	cd xml; make $(xx)
 
 cDienste: 
 	#@ per Datei ./ARCH.inc   echo "export ARCH = i386" > ARCH.inc #i386 statt arm
-	cd hcand/; sudo make $(xx)
-	cd hcanhid/; sudo make $(xx)
-	cd hcanaddressd/; sudo make $(xx)
+	cd hcand/; make $(xx)
+	cd hcanhid/; make $(xx)
+	cd hcanaddressd/; make $(xx)
 
 cppDienste:	
-	cd libhcan++/; sudo make $(xx)
-	cd telican/; sudo make $(xx)
-	cd libhcandata/; sudo make dep; make $(xx)
-	cd hcanswd/; sudo make dep; make $(xx)
-	cd hcandq/; sudo make dep; make $(xx)
+	cd libhcan++/; make $(xx)
+	cd telican/; make $(xx)
+	cd libhcandata/; make dep; make $(xx)
+	cd hcanswd/; make dep; make $(xx)
+	cd hcandq/; make dep; make $(xx)
 	
 hcanweb_client: 
-	cd hcanweb; sudo make zip ver=unlabeled
+	cd hcanweb; make zip ver=unlabeled
 
 hcanweb_server:
-	cd hcanweb/server/C1612server; sudo make clean; sudo make all
+	cd hcanweb/server/C1612server; make clean; make all
 
 firmware: 
-	cd hcanbl; sudo make $(xx) $(parm2)
-	cd firmwares/controllerboard-1612-v01; sudo make $(xx) $(parm2)
-	cd firmwares/userpanel-v01; sudo make $(xx) $(parm2)
+	cd hcanbl; make $(xx) $(parm2)
+	cd firmwares/controllerboard-1612-v01; make $(xx) $(parm2)
+	cd firmwares/userpanel-v01; make $(xx) $(parm2)
 
 firmwareOhneEds:	
-	cd firmwares/hostinterface-v02; sudo make $(xx)
-	cd firmwares/usv-modul; sudo make $(xx)
+	cd firmwares/hostinterface-v02; make $(xx)
+	cd firmwares/usv-modul; make $(xx)
 
 
 
 release: 
-	cd firmwares/controllerboard-1612-v01; sudo make release MCU=atmega32
-	cd firmwares/controllerboard-1612-v01; sudo make release MCU=atmega644
-	cd firmwares/userpanel-v01; sudo make release MCU=atmega32
-	cd firmwares/userpanel-v01; sudo make release MCU=atmega644
-	cd firmwares/hostinterface-v02; sudo make release
-	cd firmwares/usv-modul; sudo make release	
+	cd firmwares/controllerboard-1612-v01; make release MCU=atmega32
+	cd firmwares/controllerboard-1612-v01; make release MCU=atmega644
+	cd firmwares/userpanel-v01; make release MCU=atmega32
+	cd firmwares/userpanel-v01; make release MCU=atmega644
+	cd firmwares/hostinterface-v02; make release
+	cd firmwares/usv-modul; make release	

@@ -16,7 +16,7 @@ install:
 clean:
 	make clean_localServer
 	make clean_client
-	cd ./client; sudo rm -f *.zip
+	cd ./client; rm -f *.zip
 	make clean_C1612Server
 
 clean_client:
@@ -80,15 +80,15 @@ min:
 	make version ver=$(ver)
 	cd ./client/jsSource; cat *.js > combined.js
 	cd ./client/jsSource; /usr/bin/yui-compressor combined.js -o ../app/javascript/hcanweb.min.js
-	cd ./client/jsSource; sudo rm combined.js
+	cd ./client/jsSource; rm combined.js
 	#
 	cd ./client; cp installation.xml ./app/installationBsp.xml
 
 not_min:
 	make version ver=$(ver)
 	cd ./client/jsSource; cat *.js > combined.js
-	cd ./client/jsSource; sudo cp -r --remove-destination combined.js ../app/javascript/hcanweb.min.js
-	#cd ./client/jsSource; sudo rm combined.js
+	cd ./client/jsSource; cp -r --remove-destination combined.js ../app/javascript/hcanweb.min.js
+	#cd ./client/jsSource; rm combined.js
 	#
 	cd ./client; cp installation.xml ./app/installationBsp.xml
 

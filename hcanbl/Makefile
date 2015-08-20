@@ -49,7 +49,7 @@ LDFLAGS += -Wl,--section-start=.text=$(MT_BOOTLOADER_ADDRESS)
 all: $(TARGET).hex
 	avr-size $(TARGET).hex
 	test -d ./hcanBL_$(MCU) || mkdir hcanBL_$(MCU)
-	sudo mv $(TARGET).hex hcanBL_$(MCU)
+	mv $(TARGET).hex hcanBL_$(MCU)
 
 $(TARGET).hex : $(TARGET).out 
 	$(OBJCOPY) -R .eeprom -O ihex $(TARGET).out $(TARGET).hex 
@@ -68,7 +68,7 @@ erase_eeprom:
 
 clean:
 	rm -f *.o *.map *.out
-	sudo rm -f ./hcanBL_$(MCU)/*.hex
+	rm -f ./hcanBL_$(MCU)/*.hex
 
 ctags:
 	ctags *.c *.h

@@ -34,7 +34,7 @@ $(TARGET): $(OBJ) libhcan++
 	mv $@ binary_$(ARCH)
 
 clean:
-	rm -f *.o
+	rm -f *.o .depend
 	cd ../libhcan++ && make clean
 	sudo rm -f ./binary_$(ARCH)/$(TARGET)
 

@@ -35,8 +35,9 @@ hcandq: $(OBJ) libhcan++ libhcandata
 	mv $@ binary_$(ARCH)
 
 clean:
-	rm -f *.o
-	sudo rm -f ./binary_$(ARCH)/hcandq
+	rm -f *.o 
+	> .depend
+	rm -f ./binary_$(ARCH)/hcandq
 
 ctags:
 	ctags *.cc *.h ../libhcan++/*.cc ../libhcan++/*.h ../libhcandata/*.cc ../libhcandata/*.h

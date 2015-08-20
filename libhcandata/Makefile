@@ -10,7 +10,7 @@ else
 endif
 
 INC = -I.. -I. -I../include
-CXXFLAGS = -Wall -O2 $(INC) -g #-Werror 
+CXXFLAGS = -Wall -O2 $(INC) -g -fPIC #-Werror 
 
 all: clean dep libhcandata.so
 
@@ -33,7 +33,8 @@ $(OBJ): %.o:%.cc
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 clean:
-	sudo rm -f *.o ./binary_$(ARCH)/libhcandata.*
+	rm -f *.o ./binary_$(ARCH)/libhcandata.*
+	> .depend
 
 ctags:
 	ctags *.cc *.h

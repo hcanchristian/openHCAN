@@ -44,16 +44,17 @@ $(OBJ): %.o:%.cc
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 clean:
-	rm -f *.o $(TARGET)
+	rm -f *.o $(TARGET) 
+	> .depend
 	#cd ../libhcan++ && make clean
-	sudo rm -f ./binary_$(ARCH)/$(TARGET)
+	rm -f ./binary_$(ARCH)/$(TARGET)
 
 ctags:
 	ctags *.cc *.h ../libhcan++/*.cc ../libhcan++/*.h
 
 install:
 	strip ./binary_$(ARCH)/$(TARGET)
-	install ./binary_$(ARCH)/$(TARGET) /usr/bin
+	sudo install ./binary_$(ARCH)/$(TARGET) /usr/bin
 
 dep:
 	(for i in *.cc; do echo; $(CXX) -M -MG $(INC) $$i; done) > .depend

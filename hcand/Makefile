@@ -31,7 +31,7 @@ $(OBJ): %.o:%.c
 clean:
 	rm -f *.o $(TARGET)
 	@echo last_ARCH=$(ARCH) > ARCH_letzter_Compilerlauf.inc
-	sudo rm -f ./binary_$(ARCH)/$(TARGET)
+	rm -f ./binary_$(ARCH)/$(TARGET)
 
 ctags:
 	ctags *.c *.h
